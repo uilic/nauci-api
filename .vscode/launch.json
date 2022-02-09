@@ -8,7 +8,7 @@
             "name": "Local django debug",
             "type": "python",
             "request": "launch",
-            "program": "${workspaceFolder}/tutors_service/manage.py",
+            "program": "${workspaceFolder}/nauci_service/manage.py",
             "console": "integratedTerminal",
             "args": [
                 "runserver",
