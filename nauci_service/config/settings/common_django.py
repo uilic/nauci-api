@@ -17,7 +17,7 @@ SECRET_KEY = "django-insecure-%m9(%3d_%i6h1#qt$g(@@(-jhx)k#quqql0dszd&70y7+%)x%i
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -71,9 +71,12 @@ WSGI_APPLICATION = "nauci_service.config.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
-DATABASE_ENGINE = env.str("DATABASE_ENGINE", default=None)
-DATABASES = {"default": env.db("DATABASE_URL", engine=DATABASE_ENGINE)}
-
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'mydatabase',
+    }
+}
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
