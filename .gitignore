@@ -1,2 +1,6 @@
 *.pyc 
+mydatabase
+.gitconfig
+
+.venv/
 venv/
