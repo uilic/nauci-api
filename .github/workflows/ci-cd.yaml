@@ -20,9 +20,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
           instance-ids: ${{ secrets.INSTANCE_ID }}
 
-          comment: Deploy the main branch
           working-directory: /home/ubuntu/nauci-api
-          command: /bin/sh ./deploy.sh
+          command: mkdir testdiiir
+          comment: Deploy the main branch
 
       - name: Get the outputs
         run: echo "The Command id is ${{ steps.ssm.outputs.command-id }}"
