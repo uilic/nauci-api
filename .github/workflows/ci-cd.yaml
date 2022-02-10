@@ -21,7 +21,9 @@ jobs:
           instance-ids: ${{ secrets.INSTANCE_ID }}
 
           working-directory: /home/ubuntu/nauci-api
-          command: /bin/sh ./deploy.sh
+          command: |
+            sudo mkdir allalalalal
+            sudo mkdir hihihihihihihihi
           comment: Deploy the main branch
 
       - name: Get the outputs
