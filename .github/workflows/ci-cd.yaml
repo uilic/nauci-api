@@ -22,8 +22,10 @@ jobs:
 
           working-directory: /home/ubuntu/nauci-api
           command: |
-            sudo mkdir allalalalal
-            sudo mkdir hihihihihihihihi
+            sudo git pull origin main
+            sudo pip3 install -r requirements.txt
+            sudo systemctl restart gunicorn
+            sudo systemctl restart nginx
           comment: Deploy the main branch
 
       - name: Get the outputs

@@ -9,7 +9,7 @@ api_urlpatterns = [
         "api/auth/",
         include(("nauci_service.apps.accounts.urls", "auth"), namespace="api-auth"),
     ),
-    path("_healthcheck/", lambda r: HttpResponse("sdadwqdqwdqwdasd")),
+    path("_healthcheck/", lambda r: HttpResponse("healthcheck")),
 ]
 
 urlpatterns = admin_urlpatterns + api_urlpatterns
