@@ -6,3 +6,4 @@ mydatabase
 venv/
 
 .vscode/launch.json
+nauci_service/config/envs/.env
