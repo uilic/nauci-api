@@ -6,6 +6,7 @@ from django.contrib.auth.models import (
 from django.db import models
 
 from nauci_service.apps.core.models import CoreModel
+from nauci_service.apps.tutors.models import Tutor
 
 
 class UserManager(BaseUserManager):
@@ -20,7 +21,7 @@ class UserManager(BaseUserManager):
         return user
 
     def create_superuser(self, email, password):
-        user = self.create_user(email, password)
+        user = self.create_user(email=email, password=password)
         user.is_staff = True
         user.is_superuser = True
         user.save(using=self._db)
@@ -49,6 +50,9 @@ class UserAccount(PermissionsMixin, CoreModel, AbstractBaseUser):
     )
     is_tutor = models.BooleanField(
         "is tutor", default=False, help_text="Designates whether this user is a tutor."
+    )
+    tutor = models.OneToOneField(
+        Tutor, on_delete=models.CASCADE, related_name="account", null=True
     )
 
     objects = UserManager()
