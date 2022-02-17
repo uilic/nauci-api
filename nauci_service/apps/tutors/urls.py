@@ -1,4 +1,8 @@
 from django.urls import path
-from .views import ClientDocumentUploadAPIView
+from .views import TutorUploadAPIView, CertificateUploadAPIView, EducationUploadAPIView
 
-urlpatterns = [path("tutor", ClientDocumentUploadAPIView.as_view())]
+urlpatterns = [
+    path("tutor", TutorUploadAPIView.as_view()),
+    path("tutor/certificate", CertificateUploadAPIView.as_view()),
+    path("tutor/education", EducationUploadAPIView.as_view()),
+]

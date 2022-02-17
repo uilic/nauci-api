@@ -1,4 +1,4 @@
-from .tutor import Tutor  # noqa: F401
+from .tutor import Certificate, Education, Tutor  # noqa: F401
 
 
-__all__ = ["Tutor"]
+__all__ = ["Certificate", "Education", "Tutor"]
