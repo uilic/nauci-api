@@ -22,7 +22,7 @@ class RegisterAPI(generics.GenericAPIView):
             "iat": datetime.datetime.utcnow(),
         }
 
-        token = jwt.encode(payload, "secret", algorithm="HS256")
+        token = jwt.encode(payload, "secret", algorithm="HS256").decode("utf-8")
 
         response = Response()
 
@@ -52,7 +52,7 @@ class LoginAPI(generics.GenericAPIView):
             "iat": datetime.datetime.utcnow(),
         }
 
-        token = jwt.encode(payload, "secret", algorithm="HS256")
+        token = jwt.encode(payload, "secret", algorithm="HS256").decode("utf-8")
 
         response = Response()
 
@@ -80,7 +80,7 @@ class UserAPI(APIView):
         if not token:
             raise AuthenticationFailed("Unauthenticated!")
 
-        payload = jwt.decode(token[2:-1], "secret", algorithm=["HS256"])
+        payload = jwt.decode(token, "secret", algorithm=["HS256"])
 
         user = UserAccount.objects.filter(uuid=payload["uuid"]).first()
         serializer = UserSerializer(user)
