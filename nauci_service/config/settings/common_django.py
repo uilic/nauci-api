@@ -109,7 +109,7 @@ STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-CORS_ALLOWED_ORIGINS = ["http://localhost:3000"]
+CORS_ALLOWED_ORIGINS = ["http://fe-staging.eprofa.com"]
 
 CORS_ALLOW_CREDENTIALS = True
 
@@ -120,5 +120,3 @@ AWS_SECRET_ACCESS_KEY = env.str("AWS_SECRET_ACCESS_KEY", default=None)
 AWS_STORAGE_BUCKET_NAME = env.str("AWS_STORAGE_BUCKET_NAME", default=None)
 
 AWS_QUERYSTRING_AUTH = False
-
-SESSION_COOKIE_DOMAIN= '.eprofa.com'
