@@ -58,7 +58,14 @@ class LoginAPI(generics.GenericAPIView):
 
         response = Response()
 
-        response.set_cookie(key="jwt", value=token, max_age=max_age, httponly=True, domain="eprofa.com", samesite=None)
+        response.set_cookie(
+            key="jwt",
+            value=token,
+            max_age=max_age,
+            httponly=True,
+            domain="eprofa.com",
+            samesite=None,
+        )
 
         response.data = {
             "user": UserSerializer(user, context=self.get_serializer_context()).data
@@ -70,7 +77,13 @@ class LoginAPI(generics.GenericAPIView):
 class LogoutAPI(APIView):
     def post(self, request):
         response = Response()
-        response.delete_cookie("jwt", domain="eprofa.com")
+        self.set_cookie(
+            "jwt",
+            max_age=0,
+            domain="eprofa.com",
+            expires="Thu, 01 Jan 1970 00:00:00 GMT",
+            samesite=None,
+        )
         response.data = {"message": "success"}
         return response
 
