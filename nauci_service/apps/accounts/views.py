@@ -58,7 +58,7 @@ class LoginAPI(generics.GenericAPIView):
 
         response = Response()
 
-        response.set_cookie(key="jwt", value=token, max_age=max_age, httponly=True, domain=".eprofa.com'")
+        response.set_cookie(key="jwt", value=token, max_age=max_age, httponly=True, domain="eprofa.com", samesite=None)
 
         response.data = {
             "user": UserSerializer(user, context=self.get_serializer_context()).data
