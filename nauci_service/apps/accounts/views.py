@@ -45,8 +45,6 @@ class LoginAPI(generics.GenericAPIView):
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data
 
-        max_age = 365 * 24 * 60 * 60  # one year
-
         payload = {
             "uuid": str(user.uuid),
             "exp": datetime.datetime.utcnow() + datetime.timedelta(minutes=60000),
@@ -67,10 +65,7 @@ class LoginAPI(generics.GenericAPIView):
 
 class UserAPI(APIView):
     def get(self, request):
-        token = request.data.get("jwt")
-
-        if not token:
-            raise AuthenticationFailed("Unauthenticated!")
+        token = request.headers.get("jwt")
 
         payload = jwt.decode(token, "secret", algorithm=["HS256"])
 
