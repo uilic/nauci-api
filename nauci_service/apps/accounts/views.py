@@ -70,7 +70,7 @@ class LoginAPI(generics.GenericAPIView):
 class UserAPI(APIView):
     def get(self, request):
         token = request.headers.get("jwt")
-
+        print("token je:" + token)
         LOG.info("TOKEN: %s", token)
         payload = jwt.decode(token, "secret", algorithm=["HS256"])
 
