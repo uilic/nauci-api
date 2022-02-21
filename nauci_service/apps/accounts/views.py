@@ -28,8 +28,6 @@ class RegisterAPI(generics.GenericAPIView):
 
         max_age = 365 * 24 * 60 * 60  # one year
 
-        response.set_cookie(key="jwt", value=token, max_age=max_age, httponly=True)
-
         response.data = {
             "user": UserSerializer(user, context=self.get_serializer_context()).data,
             "jwt": token,
@@ -69,7 +67,7 @@ class LoginAPI(generics.GenericAPIView):
 
 class UserAPI(APIView):
     def get(self, request):
-        token = request.COOKIES.get("jwt")
+        token = request.data.get("jwt")
 
         if not token:
             raise AuthenticationFailed("Unauthenticated!")
