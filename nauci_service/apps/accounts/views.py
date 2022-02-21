@@ -26,7 +26,9 @@ class RegisterAPI(generics.GenericAPIView):
 
         response = Response()
 
-        response.set_cookie(key="jwt", value=token)
+        max_age = 365 * 24 * 60 * 60  # one year
+
+        response.set_cookie(key="jwt", value=token, max_age=max_age, httponly=True)
 
         response.data = {
             "user": UserSerializer(user, context=self.get_serializer_context()).data
