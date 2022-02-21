@@ -7,9 +7,6 @@ from rest_framework.response import Response
 from .models import UserAccount
 from .serializers import UserSerializer, RegisterSerializer, LoginSerializer
 
-import logging
-
-LOG = logging.getLogger(__name__)
 
 # Register API
 class RegisterAPI(generics.GenericAPIView):
@@ -69,9 +66,8 @@ class LoginAPI(generics.GenericAPIView):
 
 class UserAPI(APIView):
     def get(self, request):
-        token = request.headers.get("jwt")
-        print("token je:" + str(token))
-        LOG.info("TOKEN: %s", token)
+        token = request.headers.get("Authorization")
+
         payload = jwt.decode(token, "secret", algorithm=["HS256"])
 
         user = UserAccount.objects.filter(uuid=payload["uuid"]).first()
