@@ -70,7 +70,7 @@ class LoginAPI(generics.GenericAPIView):
 class LogoutAPI(APIView):
     def post(self, request):
         response = Response()
-        response.delete_cookie("jwt")
+        response.delete_cookie("jwt", domain="fe-staging.eprofa.com", samesite=None)
         response.data = {"message": "success"}
         return response
 
